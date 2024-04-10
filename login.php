@@ -2,6 +2,7 @@
    Si utilisateur/trice est non identifié(e), on affiche le formulaire
 -->
 <?php if (!isset($_SESSION['LOGGED_USER'])) : ?>
+    <h1>Se connecter</h1>
     <form action="submit_login.php" method="POST">
         <!-- si message d'erreur on l'affiche -->
         <?php if (isset($_SESSION['LOGIN_ERROR_MESSAGE'])) : ?>

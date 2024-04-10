@@ -1,5 +1,5 @@
 <?php session_start(); 
-
+$userEmail= $_SESSION['LOGGED_USER']['email'];
 
 ?>
 
@@ -23,7 +23,7 @@
                 <input type="text" placeholder="Soupe aux choux" class="form-control" id="title" name="title" aria-describedby="title-help">
             </div>
             <div class="mb-3">
-                <input type="email" class="form-control" id="email" name="email" aria-describedby="email-help" hidden value="<?php $_SESSION['LOGGED_USER']['email']?>">
+                <input type="hidden" class="form-control" id="email" name="email" aria-describedby="email-help" value="<?php echo $userEmail?>">
             </div>
 
             

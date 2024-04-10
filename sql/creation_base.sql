@@ -21,9 +21,9 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 delete from `users`;
 insert into `users` (`email`, `full_name`, `password`, `user_id`) values ('mickael.andrieu@exemple.com', 'Mickaël Andrieu', 'devine', 1);
-insert into `users` (`email`, `full_name`, `password`, `user_id`) values ('mathieu.nebra@exemple.com', 'Mathieu Nebra', 'MiamMiam', 2);
-insert into `users` (`email`, `full_name`, `password`, `user_id`) values ('laurene.castor@exemple.com', 'Laurène Castor', 'laCasto28', 3);
+insert into `users` (`email`, `full_name`, `password`, `user_id`) values ('arthurleg29@gmail.com', 'Arthur Le Gall', 'coucou', 2);
 
 delete from `list`;
 insert into `list` (`author`, `list_id`, `title`) values ('mickael.andrieu@exemple.com', 1, 'Liste vacances');
 insert into `list` (`author`, `list_id`, `title`) values ('mickael.andrieu@exemple.com', 2, 'Liste repas de famille');
+insert into `list` (`author`, `list_id`, `title`) values ('arthurleg29@gmail.com', 3, 'Liste semaine 10 avril');

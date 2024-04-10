@@ -17,6 +17,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="logout.php">Déconnexion</a>
                     </li>
+
+                <?php else:?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="register.php">S'enregistrer</a>
+                    </li>
                 <?php endif; ?>
             </ul>
         </div>

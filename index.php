@@ -23,18 +23,20 @@ require_once(__DIR__."/variables.php");
 
         
 
-        <?php if (!isset($_SESSION['LOGGED_USER'])) : ?>
-            <?php require_once(__DIR__ . '/login.php'); ?>
-        <?php else :?>
+        
+        <?php require_once(__DIR__ . '/login.php'); ?>
+        <?php if (isset($_SESSION['LOGGED_USER'])) : ?>
             <h1>Vos listes</h1>
             <?php foreach ($listes as $liste) : ?>
+            <?php if($liste['author'] == $_SESSION['LOGGED_USER']['email']):?>
             <article>
                 <h3><?php echo($liste['title']); ?></h3>
                 <ul class="list-group list-group-horizontal">
                         <li class="list-group-item"><a class="link-success" href="recipes_update.php?id=<?php echo($liste['list_id']); ?>">Editer la liste</a></li>
-                        <li class="list-group-item"><a class="link-danger" href="recipes_delete.php?id=<?php echo($liste['list_id']); ?>">Supprimer la liste</a></li>
+                        <li class="list-group-item"><a class="link-danger" href="liste_delete.php?id=<?php echo($liste['list_id']); ?>">Supprimer la liste</a></li>
                 </ul>
             </article>
+        <?php endif;?>
         <?php endforeach ?>
         <?php endif;?>
 
