@@ -32,7 +32,7 @@ require_once(__DIR__."/variables.php");
             <article>
                 <h3><?php echo($liste['title']); ?></h3>
                 <ul class="list-group list-group-horizontal">
-                        <li class="list-group-item"><a class="link-success" href="recipes_update.php?id=<?php echo($liste['list_id']); ?>">Editer la liste</a></li>
+                        <li class="list-group-item"><a class="link-success" href="liste_update.php?id=<?php echo($liste['list_id']); ?>">Editer la liste</a></li>
                         <li class="list-group-item"><a class="link-danger" href="liste_delete.php?id=<?php echo($liste['list_id']); ?>">Supprimer la liste</a></li>
                 </ul>
             </article>
