@@ -1,4 +1,12 @@
 <?php session_start(); 
+require_once(__DIR__ . '/functions.php');
+
+if(!isset($_SESSION['LOGGED_USER'])){
+    redirectToUrl("index.php");
+    return;
+}
+
+
 require_once(__DIR__ . '/databaseconnect.php');
 
 $userEmail= $_SESSION['LOGGED_USER']['email'];
@@ -12,7 +20,7 @@ $total = $getLine->fetchAll();
 $title=$total[0]['title'];
 $author=$total[0]['author'];
 
-$getContent = $mysqlClient->prepare('SELECT title FROM content INNER JOIN users ON users.user_id = content.author_id WHERE list_id = :id AND email = :email');
+$getContent = $mysqlClient->prepare('SELECT title, content_id FROM content INNER JOIN users ON users.user_id = content.author_id WHERE list_id = :id AND email = :email');
 $getContent->execute([
     'id' => (int)$getData['id'],
     'email' => $author,
@@ -26,7 +34,6 @@ if(!empty($_POST)) {
         $display = 'block';
     }
 }
-
 
 ?>
 
@@ -73,7 +80,7 @@ if(!empty($_POST)) {
                 
                     <p> <?php echo($contenu['title']); ?></p>
                     <!-- <a class="btn btn-danger mx-lg-2 btn-sm" href="liste_delete.php?id=<?php echo($liste['list_id']); ?>">Supprimer de la liste</a> -->
-                    <i class="bi bi-trash btn btn-danger mx-lg-2"></i>
+                    <a class="bi bi-trash btn btn-danger mx-lg-2" href="delete_item.php?id=<?php echo ($contenu['content_id'])?>&list_id=<?php echo $getData['id']?>"></a>
 
 
             </article>

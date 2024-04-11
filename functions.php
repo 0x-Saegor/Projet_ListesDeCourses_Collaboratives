@@ -1,4 +1,6 @@
 <?php
+require_once(__DIR__."/databaseconnect.php");
+
 
 function displayAuthor(string $authorEmail, array $users): string
 {
@@ -17,3 +19,4 @@ function redirectToUrl(string $url): never
     header("Location: {$url}");
     exit();
 }
+
