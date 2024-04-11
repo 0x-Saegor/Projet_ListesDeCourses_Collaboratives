@@ -21,8 +21,7 @@ if (isset($postData['email']) &&  isset($postData['password']) && isset($postDat
             if ($user['email'] === $postData['email']) {
                 $_SESSION['LOGIN_ERROR_MESSAGE'] = sprintf(
                     "L'email donné avait déjà été entré par quelqu'un d'autre : (%s)",
-                    $postData['email'],
-                );
+                    $postData['email']);
 
                 redirectToUrl("register.php");
                 return;

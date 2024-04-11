@@ -3,6 +3,7 @@
 require_once(__DIR__."/functions.php");
 require_once(__DIR__."/variables.php");
 ?>
+<!-- https://www.w3schools.com/bootstrap/bootstrap_examples.asp -->
 
 <!DOCTYPE html>
 <html>
@@ -12,7 +13,7 @@ require_once(__DIR__."/variables.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Site de listes de courses - Page d'accueil</title>
     <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.css"
             rel="stylesheet"
     >
 </head>
@@ -30,10 +31,10 @@ require_once(__DIR__."/variables.php");
             <?php foreach ($listes as $liste) : ?>
             <?php if($liste['author'] == $_SESSION['LOGGED_USER']['email']):?>
             <article>
-                <h3><?php echo($liste['title']); ?></h3>
                 <ul class="list-group list-group-horizontal">
-                        <li class="list-group-item"><a class="link-success" href="liste_update.php?id=<?php echo($liste['list_id']); ?>">Editer la liste</a></li>
-                        <li class="list-group-item"><a class="link-danger" href="liste_delete.php?id=<?php echo($liste['list_id']); ?>">Supprimer la liste</a></li>
+                    <h4><?php echo($liste['title']); ?></h4>
+                    <a class="btn btn-success mx-lg-2" href="liste_update.php?id=<?php echo($liste['list_id']); ?>">Editer la liste</a>
+                    <a class="btn btn-danger mx-lg-2" href="liste_delete.php?id=<?php echo($liste['list_id']); ?>">Supprimer la liste</a>
                 </ul>
             </article>
         <?php endif;?>

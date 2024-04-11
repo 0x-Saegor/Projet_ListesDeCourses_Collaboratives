@@ -30,7 +30,9 @@ $contenuListe = $getContent->fetchAll();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Site de listes - Page d'ajout de liste</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
 </head>
 
 <body class="d-flex flex-column min-vh-100">
@@ -40,10 +42,20 @@ $contenuListe = $getContent->fetchAll();
         <?php if($author === $_SESSION['LOGGED_USER']['email']):?>
         <h1><?php echo $title?></h1>
         <?php foreach ($contenuListe as $contenu) : ?>
-            <article>
-                <p><?php echo($contenu['title']); ?></p>
+            <article class="list-group list-group-horizontal-sm" >
+                
+                    <p> <?php echo($contenu['title']); ?></p>
+                    <!-- <a class="btn btn-danger mx-lg-2 btn-sm" href="liste_delete.php?id=<?php echo($liste['list_id']); ?>">Supprimer de la liste</a> -->
+                    <i class="bi bi-trash btn btn-danger mx-lg-2"></i>
+
+
+
             </article>
         <?php endforeach ?>
+
+
+        <i class="bi bi-plus-lg btn btn-success mx-lg-2 position-absolute" style="left:95%;top:90%"></i>
+
 
 
 
