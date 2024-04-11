@@ -36,6 +36,7 @@ require_once(__DIR__."/variables.php");
                     <a class="btn btn-success mx-lg-2" href="liste_update.php?id=<?php echo($liste['list_id']); ?>">Editer la liste</a>
                     <a class="btn btn-danger mx-lg-2" href="liste_delete.php?id=<?php echo($liste['list_id']); ?>">Supprimer la liste</a>
                 </ul>
+                <br>
             </article>
         <?php endif;?>
         <?php endforeach ?>
