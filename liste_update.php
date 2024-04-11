@@ -76,8 +76,8 @@ if(!empty($_POST)) {
                     <i class="bi bi-trash btn btn-danger mx-lg-2"></i>
 
 
-
             </article>
+            <br>
         <?php endforeach ?>
 
 
