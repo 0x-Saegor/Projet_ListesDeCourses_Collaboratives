@@ -17,8 +17,15 @@ $getLine->execute([
     'id' => (int)$getData['id'],
 ]);
 $total = $getLine->fetchAll();
-$title=$total[0]['title'];
-$author=$total[0]['author'];
+if($total===[]){
+    $title="No title";
+    $author="No author";
+}
+else{
+    $title=$total[0]['title'];
+    $author=$total[0]['author'];
+}
+
 
 $getContent = $mysqlClient->prepare('SELECT title, content_id FROM content INNER JOIN users ON users.user_id = content.author_id WHERE list_id = :id AND email = :email');
 $getContent->execute([
