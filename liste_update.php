@@ -12,7 +12,7 @@ require_once(__DIR__ . '/databaseconnect.php');
 $userEmail= $_SESSION['LOGGED_USER']['email'];
 $getData = $_GET;
 
-$getLine = $mysqlClient->prepare('SELECT title,author FROM list WHERE list_id = :id');
+$getLine = $mysqlClient->prepare('SELECT title,author, access FROM list WHERE list_id = :id');
 $getLine->execute([
     'id' => (int)$getData['id'],
 ]);
@@ -27,18 +27,23 @@ else{
 }
 
 
-$getContent = $mysqlClient->prepare('SELECT title, content_id FROM content INNER JOIN users ON users.user_id = content.author_id WHERE list_id = :id AND email = :email');
+$getContent = $mysqlClient->prepare('SELECT title, content_id FROM content WHERE list_id = :id');
 $getContent->execute([
     'id' => (int)$getData['id'],
-    'email' => $author,
 
 ]);
 $contenuListe = $getContent->fetchAll();
 
 $display = 'none';
+$display2 = 'none';
 if(!empty($_POST)) {
     if(array_key_exists('button', $_POST)) {
         $display = 'block';
+    }
+}
+if(!empty($_POST)) {
+    if(array_key_exists('share', $_POST)) {
+        $display2 = 'block';
     }
 }
 
@@ -69,18 +74,33 @@ if(!empty($_POST)) {
             top: 70%;
             border-radius:25px;
         }
+
+        .shareUsers {
+            display:<?php echo $display2;?>;
+            margin: auto;
+            width: 20%;
+            border: 3px solid #0b60db;
+            padding: 10px;
+            position:fixed;
+            left:2%;
+            top: 67%;
+            border-radius:25px;
+        }
     </style>
 
 <body class="d-flex flex-column min-vh-100">
     <form method="post" action="liste_update.php?id=<?php echo $getData['id']?>">
     <button class="bi bi-plus-lg btn btn-success mx-lg-2 position-fixed" style="left:95%;top:90%" type="submit" name="button"></button>
-    </form>
+</form>
+<form method="post" action="liste_update.php?id=<?php echo $getData['id']?>">
+<button class="bi bi-share btn btn-primary mx-lg-2 position-fixed" style="left:2%;top:90%" type="submit" name="share"> Partager</button>
+</form>
     <div class="container">
     
 
 
         <?php require_once(__DIR__ . '/header.php'); ?>
-        <?php if($author === $_SESSION['LOGGED_USER']['email']):?>
+        <?php if(in_array($_SESSION['LOGGED_USER']['user_id'], unserialize($total[0]['access']))):?>
         <h1><?php echo $title?></h1>
         <?php foreach ($contenuListe as $contenu) : ?>
             <article class="list-group list-group-horizontal-sm" >
@@ -111,8 +131,23 @@ if(!empty($_POST)) {
             
             <button type="submit" class="btn btn-success">Ajouter</button>
         </form>
+        </div>
 
-
+        <div class="shareUsers">
+        <form action="share_item.php" method="POST">
+            <div class="mb-3">
+                <h6 for="title" class="form-label">Email</h6>
+                <input type="text" placeholder="example@gmail.com" class="form-control" id="title" name="title" aria-describedby="title-help">
+            </div>            
+            <div class="mb-3">
+                <input type="hidden" class="form-control" id="id" name="id" aria-describedby="id-help" value="<?php echo $_GET['id']?>">
+            </div>
+            <div class="mb-3">
+                <input type="hidden" class="form-control" id="email" name="email" aria-describedby="email-help" value="<?php echo $userEmail?>">
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Partager</button>
+        </form>
         </div>
 
         <?php else:?>

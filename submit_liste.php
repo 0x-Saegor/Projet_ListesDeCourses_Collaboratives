@@ -1,4 +1,5 @@
 <?php
+$id = $_SESSION['LOGGED_USER']['id']
 require_once(__DIR__ . '/databaseconnect.php');
 require_once(__DIR__ . '/functions.php');
 

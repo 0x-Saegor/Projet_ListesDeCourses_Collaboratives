@@ -3,7 +3,10 @@
 require_once(__DIR__."/functions.php");
 require_once(__DIR__."/variables.php");
 ?>
-<!-- https://www.w3schools.com/bootstrap/bootstrap_examples.asp -->
+<!-- https://www.w3schools.com/bootstrap/bootstrap_examples.asp 
+
+https://www.cluemediator.com/insert-an-array-into-a-mysql-database-using-php
+-->
 
 <!DOCTYPE html>
 <html>
@@ -29,7 +32,7 @@ require_once(__DIR__."/variables.php");
         <?php if (isset($_SESSION['LOGGED_USER'])) : ?>
             <h1>Vos listes</h1>
             <?php foreach ($listes as $liste) : ?>
-            <?php if($liste['author'] == $_SESSION['LOGGED_USER']['email']):?>
+            <?php if(in_array($_SESSION['LOGGED_USER']['user_id'], unserialize($liste['access']))):?>
             <article>
                 <ul class="list-group list-group-horizontal">
                     <h4><?php echo($liste['title']); ?></h4>
