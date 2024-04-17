@@ -92,9 +92,11 @@ if(!empty($_POST)) {
     <form method="post" action="liste_update.php?id=<?php echo $getData['id']?>">
     <button class="bi bi-plus-lg btn btn-success mx-lg-2 position-fixed" style="left:95%;top:90%" type="submit" name="button"></button>
 </form>
+<?php if($_SESSION['LOGGED_USER']['email']==$author):?>
 <form method="post" action="liste_update.php?id=<?php echo $getData['id']?>">
 <button class="bi bi-share btn btn-primary mx-lg-2 position-fixed" style="left:2%;top:90%" type="submit" name="share"> Partager</button>
 </form>
+<?php endif;?>
     <div class="container">
     
 
