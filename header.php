@@ -15,6 +15,9 @@
                         <a class="nav-link" href="nouvelle_liste.php">Ajouter une liste</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="shared.php">Mes partages</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="logout.php">Déconnexion</a>
                     </li>
 
