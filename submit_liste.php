@@ -1,5 +1,6 @@
 <?php
-$id = $_SESSION['LOGGED_USER']['id']
+session_start();
+$id = $_SESSION['LOGGED_USER']['user_id'];
 require_once(__DIR__ . '/databaseconnect.php');
 require_once(__DIR__ . '/functions.php');
 
@@ -19,10 +20,12 @@ if (
     return;
 }
 
+$access = [$id];
+$access = serialize($access);
 
 
 // Ecriture de la requête
-$sqlQuery = 'INSERT INTO list(title, author) VALUES (:title, :author)';
+$sqlQuery = 'INSERT INTO list(title, author, access) VALUES (:title, :author, :access)';
 
 // Préparation
 $insertListe = $mysqlClient->prepare($sqlQuery);
@@ -31,6 +34,7 @@ $insertListe = $mysqlClient->prepare($sqlQuery);
 $insertListe->execute([
     'title' => $postData['title'],
     'author' => $postData['email'],
+    'access' => $access,
 ]);
 
 redirectToUrl("index.php");

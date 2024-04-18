@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS `list` (
     `list_id` int(11) NOT NULL AUTO_INCREMENT,
     `title` varchar(128) NOT NULL,
     `author` varchar(255) NOT NULL,
+    `access` varchar(255) NOT NULL,
     PRIMARY KEY (`list_id`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -32,9 +33,9 @@ insert into `users` (`email`, `full_name`, `password`, `user_id`) values ('micka
 insert into `users` (`email`, `full_name`, `password`, `user_id`) values ('arthurleg29@gmail.com', 'Arthur Le Gall', 'coucou', 2);
 
 delete from `list`;
-insert into `list` (`author`, `list_id`, `title`) values ('mickael.andrieu@exemple.com', 1, 'Liste vacances');
-insert into `list` (`author`, `list_id`, `title`) values ('mickael.andrieu@exemple.com', 2, 'Liste repas de famille');
-insert into `list` (`author`, `list_id`, `title`) values ('arthurleg29@gmail.com', 3, 'Liste semaine 10 avril');
+insert into `list` (`author`, `list_id`, `title`, `access`) values ('mickael.andrieu@exemple.com', 1, 'Liste vacances', 'a:2:{i:0;i:1;i:1;i:2;}');
+insert into `list` (`author`, `list_id`, `title`, `access`) values ('mickael.andrieu@exemple.com', 2, 'Liste repas de famille', 'a:2:{i:0;i:1;i:1;i:2;}');
+insert into `list` (`author`, `list_id`, `title`, `access`) values ('arthurleg29@gmail.com', 3, 'Liste semaine 10 avril', 'a:2:{i:0;i:1;i:1;i:2;}');
 
 delete from `content`;
 insert into `content` (`title`, `author_id`, `list_id`, `content_id`) values ('Brique de lait', 1,  1, 1);

@@ -37,7 +37,9 @@ https://www.cluemediator.com/insert-an-array-into-a-mysql-database-using-php
                 <ul class="list-group list-group-horizontal">
                     <h4><?php echo($liste['title']); ?></h4>
                     <a class="btn btn-success mx-lg-2" href="liste_update.php?id=<?php echo($liste['list_id']); ?>">Editer la liste</a>
+                    <?php if($_SESSION['LOGGED_USER']['email'] == $liste['author']):?>
                     <a class="btn btn-danger mx-lg-2" href="liste_delete.php?id=<?php echo($liste['list_id']); ?>">Supprimer la liste</a>
+                    <?php endif?>
                 </ul>
                 <br>
             </article>

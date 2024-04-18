@@ -29,7 +29,6 @@ if($_SESSION['LOGGED_USER']['email'] !== $author){
     print_r ($author);
     echo "Cette recette n'est pas la votre";
     redirectToUrl("index.php");
-    return;
 }
 
 $deleteListeStatement = $mysqlClient->prepare('DELETE FROM list WHERE list_id = :id');

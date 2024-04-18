@@ -102,6 +102,17 @@ if(!empty($_POST)) {
 
 
         <?php require_once(__DIR__ . '/header.php'); ?>
+        <?php if (isset($_SESSION['SHARE_ERROR'])) : ?>
+        <div class="alert alert-danger" role="alert">
+        <?php echo $_SESSION['SHARE_ERROR']?>
+        </div>
+        <?php elseif(isset($_SESSION['SHARED'])):?>
+            <div class="alert alert-success" role="alert">
+        <?php echo $_SESSION['SHARED']?>
+        </div>
+        <?php endif;?>
+
+
         <?php if(in_array($_SESSION['LOGGED_USER']['user_id'], unserialize($total[0]['access']))):?>
         <h1><?php echo $title?></h1>
         <?php foreach ($contenuListe as $contenu) : ?>
@@ -139,13 +150,10 @@ if(!empty($_POST)) {
         <form action="share_item.php" method="POST">
             <div class="mb-3">
                 <h6 for="title" class="form-label">Email</h6>
-                <input type="text" placeholder="example@gmail.com" class="form-control" id="title" name="title" aria-describedby="title-help">
+                <input type="email" placeholder="example@gmail.com" class="form-control" id="email" name="email" aria-describedby="email-help">
             </div>            
             <div class="mb-3">
                 <input type="hidden" class="form-control" id="id" name="id" aria-describedby="id-help" value="<?php echo $_GET['id']?>">
-            </div>
-            <div class="mb-3">
-                <input type="hidden" class="form-control" id="email" name="email" aria-describedby="email-help" value="<?php echo $userEmail?>">
             </div>
             
             <button type="submit" class="btn btn-primary">Partager</button>
@@ -160,3 +168,6 @@ if(!empty($_POST)) {
 </body>
 
 </html>
+<?php 
+unset($_SESSION['SHARE_ERROR']);
+unset($_SESSION['SHARED']);

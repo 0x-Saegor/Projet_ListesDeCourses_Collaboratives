@@ -29,8 +29,8 @@ if (
     redirectToUrl("liste_update.php?id=".$getData['list_id']);
 }
 
-
-if(in_array($_SESSION['LOGGED_USER']['user_id'], unserialize($liste['access']))){
+if(!in_array($_SESSION['LOGGED_USER']['user_id'], unserialize($liste))){
+    $_SESSION['SHARE_ERROR'] = "Erreur, vous ne faites pas partie des éditeurs.";
     redirectToUrl("liste_update.php?id=".$getData['list_id']);
 }
 
