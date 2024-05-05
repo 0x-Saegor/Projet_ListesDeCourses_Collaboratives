@@ -32,7 +32,7 @@ $sqlQuery = 'INSERT INTO content(title, author_id, list_id) VALUES (:title, :aut
 // Préparation
 $insertListe = $mysqlClient->prepare($sqlQuery);
 
-// Exécution ! La recette est maintenant en base de données
+// Exécution ! La liste est maintenant en base de données
 $insertListe->execute([
     'title' => $postData['title'],
     'author_id' => $id,

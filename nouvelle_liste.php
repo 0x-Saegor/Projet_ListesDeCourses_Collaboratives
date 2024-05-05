@@ -16,7 +16,7 @@ $userEmail= $_SESSION['LOGGED_USER']['email'];
     <div class="container">
 
         <?php require_once(__DIR__ . '/header.php'); ?>
-        <h1>Ajouter une recette</h1>
+        <h1>Ajouter une liste</h1>
         <form action="submit_liste.php" method="POST">
             <div class="mb-3">
                 <label for="title" class="form-label">Titre</label>

@@ -14,7 +14,7 @@ require_once(__DIR__ . '/functions.php');
 $postData = $_POST;
 
 if (!isset($postData['id']) || !is_numeric($postData['id'])) {
-    echo 'Il faut un identifiant valide pour supprimer une recette.';
+    echo 'Il faut un identifiant valide pour supprimer une liste.';
     return;
 }
 
@@ -27,7 +27,7 @@ $author = $getAuthor->fetchAll()[0]['author'];
 if($_SESSION['LOGGED_USER']['email'] !== $author){
     echo $_SESSION['LOGGED_USER']['email'];
     print_r ($author);
-    echo "Cette recette n'est pas la votre";
+    echo "Cette liste n'est pas la votre";
     redirectToUrl("index.php");
 }
 

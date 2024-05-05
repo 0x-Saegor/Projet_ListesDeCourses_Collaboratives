@@ -35,7 +35,7 @@ if (isset($postData['email']) &&  isset($postData['password']) && isset($postDat
         // Préparation
         $insertUser = $mysqlClient->prepare($sqlQuery);
 
-        // Exécution ! La recette est maintenant en base de données
+        // Exécution ! La liste est maintenant en base de données
         $insertUser->execute([
             'full_name' => $full_name,
             'email' => $postData['email'],
