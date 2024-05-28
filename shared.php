@@ -9,15 +9,7 @@ $getContent->execute([
 
 ]);
 $contenuListe = $getContent->fetchAll();
-
-
-
-
 ?>
-<!-- https://www.w3schools.com/bootstrap/bootstrap_examples.asp 
-
-https://www.cluemediator.com/insert-an-array-into-a-mysql-database-using-php
--->
 
 <!DOCTYPE html>
 <html>
@@ -25,7 +17,7 @@ https://www.cluemediator.com/insert-an-array-into-a-mysql-database-using-php
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Site de listes de courses - Page d'accueil</title>
+    <title>Site de listes de courses - Listes partagées</title>
     <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.css"
             rel="stylesheet"
@@ -37,6 +29,11 @@ https://www.cluemediator.com/insert-an-array-into-a-mysql-database-using-php
         <?php require_once(__DIR__ . '/header.php'); ?>
 
         <?php
+        if($contenuListe == []){
+            echo "Vous n'avez aucune liste";
+        }
+
+
         foreach($contenuListe as $liste){
             echo "<strong>".$liste['title'] ."</strong>". " est partagée avec : ";
             foreach(unserialize($liste['access']) as $st){

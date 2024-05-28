@@ -2,7 +2,7 @@
 CREATE DATABASE IF NOT EXISTS `liste_course`;
 USE `liste_course`;
 
--- Création de la table recipes
+-- Création de la table list
 CREATE TABLE IF NOT EXISTS `list` (
     `list_id` int(11) NOT NULL AUTO_INCREMENT,
     `title` varchar(128) NOT NULL,
@@ -20,6 +20,7 @@ CREATE TABLE IF NOT EXISTS `users` (
     PRIMARY KEY (`user_id`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- Création de la table content
 CREATE TABLE IF NOT EXISTS `content` (
     `content_id` int(11) NOT NULL AUTO_INCREMENT,
     `title` varchar(128) NOT NULL,

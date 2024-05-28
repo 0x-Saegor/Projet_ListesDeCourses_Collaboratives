@@ -3,10 +3,6 @@
 require_once(__DIR__."/functions.php");
 require_once(__DIR__."/variables.php");
 ?>
-<!-- https://www.w3schools.com/bootstrap/bootstrap_examples.asp 
-
-https://www.cluemediator.com/insert-an-array-into-a-mysql-database-using-php
--->
 
 <!DOCTYPE html>
 <html>
@@ -47,12 +43,6 @@ https://www.cluemediator.com/insert-an-array-into-a-mysql-database-using-php
         <?php endforeach ?>
         <?php endif;?>
 
-
-
-        <!-- Formulaire de connexion -->
-        
     </div>
-
-    <!-- inclusion du bas de page du site -->
 </body>
 </html>

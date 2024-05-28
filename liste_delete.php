@@ -3,10 +3,6 @@ session_start();
 
 require_once(__DIR__ . '/isConnect.php');
 
-/**
- * On ne traite pas les super globales provenant de l'utilisateur directement,
- * ces données doivent être testées et vérifiées.
- */
 $getData = $_GET;
 
 if (!isset($getData['id']) || !is_numeric($getData['id'])) {
@@ -21,7 +17,7 @@ if (!isset($getData['id']) || !is_numeric($getData['id'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Site de listes - Supprimer la liste ?</title>
+    <title>Site de listes de courses - Suppresion de liste</title>
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.css"
         rel="stylesheet"
