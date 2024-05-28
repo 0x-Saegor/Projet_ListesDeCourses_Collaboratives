@@ -1,7 +1,9 @@
 <?php
 $uri = $_SERVER['REQUEST_URI'];
 
+// Cut the string by /
 $arr = explode('/', $uri);
+// Create a new string with only the last part : file name
 $string = implode('/',array_slice($arr, 3, 4));
 ?>
 
